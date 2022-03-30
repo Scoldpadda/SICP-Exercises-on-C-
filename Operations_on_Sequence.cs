@@ -8,7 +8,7 @@ namespace Sequence_Operations
     class Operations_on_Sequence
     {
 
-        public static List<int> Accumulate_n(Func<int, int, int> op, int initial, List<List<int>> seqs)
+        public static List<int> Accumulate_n(Func<int, int, int> op, int initial, List<List<int>> seqs) // i`ll change it recursly latter.
         {
             List<int> result = new List<int>();
                 result.Add(Accumulate(op,initial,Adding(seqs)));
@@ -28,7 +28,7 @@ namespace Sequence_Operations
            
             
         }
-        public static List<List<int>> Select_Cdr_(List<List<int>> seqs)
+        public static List<List<int>> Select_Cdr_(List<List<int>> seqs) // return list of list without first elements in each list
         {
             List<List<int>> result = new List<List<int>>();
             foreach(var i in seqs)
@@ -46,7 +46,7 @@ namespace Sequence_Operations
             }
             return result;
         }
-        public static List<int> Select_Car(List<int> seq)
+        public static List<int> Select_Car(List<int> seq) // new list consist only first element
         {
             List<int> result = new List<int>();
             if (seq.Count <= 0)
@@ -61,7 +61,7 @@ namespace Sequence_Operations
             }
         }
 
-        public static int Accumulate(Func<int, int, int> op, int initial, List<int> sequence)
+        public static int Accumulate(Func<int, int, int> op, int initial, List<int> sequence) // accumulate list elements by specify operation
         {
             if (sequence == null || sequence.Count <= 0)
             {
@@ -74,7 +74,7 @@ namespace Sequence_Operations
             
         }
 
-        private static List<int> Map(Func<int, int> proc, List<int> sequence)
+        private static List<int> Map(Func<int, int> proc, List<int> sequence) apply specify procedure for each element in list
         {
             var result = new List<int>();
           for(int i=0; i<sequence.Count; i++)
