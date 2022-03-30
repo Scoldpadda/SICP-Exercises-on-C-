@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-
+ // Exercise 2.36 
 namespace Sequence_Operations
 {
     class Operations_on_Sequence
