@@ -8,14 +8,23 @@ namespace Sequence_Operations
     class Operations_on_Sequence
     {
 
-        public static List<int> Accumulate_n(Func<int, int, int> op, int initial, List<List<int>> seqs) // i`ll change it recursly latter.
+        public static List<int> Accumulate_n(Func<int, int, int> op, int initial, List<List<int>> seqs)
         {
             List<int> result = new List<int>();
-                result.Add(Accumulate(op,initial,Adding(seqs)));
-            result.Add(Accumulate(op, initial, Adding(Select_Cdr_(seqs))));
-            result.Add(Accumulate(op, initial, Adding(Select_Cdr_(Select_Cdr_(seqs)))));
+            Compute(seqs);
             return result;
-
+            int Compute(List<List<int>> seq_)
+            {
+                if(Car(seq_).Count <= 0)
+                {
+                    return default;
+                }
+                else
+                {
+                    result.Add(Accumulate(op, initial, Adding(seq_)));
+                    return Compute(Select_Cdr_(seq_));
+                }
+            }
             List<int> Adding(List<List<int>> seq)
             {
                 List<int> result = new List<int>();
@@ -24,10 +33,9 @@ namespace Sequence_Operations
                     result.Add(Car(i));
                 }
                 return result;
-            }
-           
-            
+            }  
         }
+      
         public static List<List<int>> Select_Cdr_(List<List<int>> seqs) // return list of list without first elements in each list
         {
             List<List<int>> result = new List<List<int>>();
